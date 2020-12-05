@@ -1,0 +1,14 @@
+0.7
+2020.1
+May 27 2020
+19:59:15
+/home/centos/Dinosaur Game YT/Dinosaur Game YT.sim/sim_1/behav/xsim/glbl.v,1590624368,verilog,,,,glbl,,,,,,,,
+/home/centos/Dinosaur Game YT/Dinosaur Game YT.srcs/sim_1/new/top_tb.v,1607112755,verilog,,,,top_tb,,,,,,,,
+/home/centos/Dinosaur Game YT/Dinosaur Game YT.srcs/sources_1/imports/new/clock_divider.v,1604204725,verilog,,/home/centos/Dinosaur Game YT/Dinosaur Game YT.srcs/sources_1/imports/verilog files/dinosprite.v,,clock_divider,,,,,,,,
+/home/centos/Dinosaur Game YT/Dinosaur Game YT.srcs/sources_1/imports/verilog files/dinosprite.v,1596170967,verilog,,/home/centos/Dinosaur Game YT/Dinosaur Game YT.srcs/sources_1/imports/verilog files/jumping.v,,dinosprite,,,,,,,,
+/home/centos/Dinosaur Game YT/Dinosaur Game YT.srcs/sources_1/imports/verilog files/jumping.v,1596170967,verilog,,/home/centos/Dinosaur Game YT/Dinosaur Game YT.srcs/sources_1/imports/verilog files/rng.v,,jumping,,,,,,,,
+/home/centos/Dinosaur Game YT/Dinosaur Game YT.srcs/sources_1/imports/verilog files/rng.v,1596170967,verilog,,/home/centos/Dinosaur Game YT/Dinosaur Game YT.srcs/sources_1/imports/verilog files/scroll.v,,rng,,,,,,,,
+/home/centos/Dinosaur Game YT/Dinosaur Game YT.srcs/sources_1/imports/verilog files/score.v,1596170967,verilog,,/home/centos/Dinosaur Game YT/Dinosaur Game YT.srcs/sources_1/imports/verilog files/scroll.v,,score,,,,,,,,
+/home/centos/Dinosaur Game YT/Dinosaur Game YT.srcs/sources_1/imports/verilog files/scroll.v,1596170967,verilog,,/home/centos/Dinosaur Game YT/Dinosaur Game YT.srcs/sources_1/imports/verilog files/top.v,,scroll,,,,,,,,
+/home/centos/Dinosaur Game YT/Dinosaur Game YT.srcs/sources_1/imports/verilog files/top.v,1607111616,verilog,,/home/centos/Dinosaur Game YT/Dinosaur Game YT.srcs/sources_1/imports/verilog files/vga.v,,top,,,,,,,,
+/home/centos/Dinosaur Game YT/Dinosaur Game YT.srcs/sources_1/imports/verilog files/vga.v,1596170967,verilog,,/home/centos/Dinosaur Game YT/Dinosaur Game YT.srcs/sim_1/new/top_tb.v,,vga,,,,,,,,

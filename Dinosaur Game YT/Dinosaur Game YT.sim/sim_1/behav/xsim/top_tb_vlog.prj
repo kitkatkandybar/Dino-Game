@@ -1,0 +1,16 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../Dinosaur Game YT.srcs/sources_1/imports/new/clock_divider.v" \
+"../../../../Dinosaur Game YT.srcs/sources_1/imports/verilog files/dinosprite.v" \
+"../../../../Dinosaur Game YT.srcs/sources_1/imports/verilog files/jumping.v" \
+"../../../../Dinosaur Game YT.srcs/sources_1/imports/verilog files/rng.v" \
+"../../../../Dinosaur Game YT.srcs/sources_1/imports/verilog files/scroll.v" \
+"../../../../Dinosaur Game YT.srcs/sources_1/imports/verilog files/top.v" \
+"../../../../Dinosaur Game YT.srcs/sources_1/imports/verilog files/vga.v" \
+"../../../../Dinosaur Game YT.srcs/sim_1/new/top_tb.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
