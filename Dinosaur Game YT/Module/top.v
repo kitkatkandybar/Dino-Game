@@ -61,10 +61,12 @@ module top(
     .halt(collide),
     .reset(reset)
     );
+    
     dinosprite dinosprite_inst(
     .clk(divided_clk),
     .sprite(runner)
     );
+    
     vga vga_inst(
     .clk(divided_clk),
     .vaddress(vaddress),
@@ -72,6 +74,7 @@ module top(
     .hsync(hsync),
     .vsync(vsync)
     );
+    
     rng rng_inst(
     .clk(divided_clk),
     .button(button),
