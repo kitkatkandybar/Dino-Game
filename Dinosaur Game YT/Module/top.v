@@ -26,6 +26,8 @@ module top(
     reg [22:0] run1 [46:0];
     reg [22:0] run2 [46:0];
     reg [22:0] death [46:0];
+    reg [37:0] asteroid [37:0];
+    reg [40:0] fire [40:0];
 //    reg [255:0] floor [5:0];
 //    reg [26:0] cactus1 [46:0];
 //    reg [26:0] cactus2 [46:0];
@@ -44,10 +46,12 @@ module top(
     assign reset = collide&(leftbtn|rightbtn|upbtn|downbtn);
     
     //Initializing sprite memory from files
-    initial begin //TODO: Fix this idiot
+    initial begin 
     $readmemb("dino.mem", run1);
     $readmemb("dino2work.mem", run2);
     $readmemb("death.mem",death);
+    $readmemb("asteroid.mem",asteroid);
+    $readmemb("fire.mem",fire);
 //    $readmemb("floor.mem", floor);
 //    $readmemb("cactus.mem", cactus1);
 //    $readmemb("cactus2.mem", cactus2);
