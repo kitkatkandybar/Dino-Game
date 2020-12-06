@@ -65,18 +65,20 @@ module top(
     .halt(collide),
     .reset(reset)
     );
+    
     dinosprite dinosprite_inst(
     .clk(divided_clk),
     .sprite(runner)
     );
    
-   /* scroll scroll_inst(
+   /* 
+    scroll scroll_inst(
     .clk(divided_clk),
     .pos(scrolladdr[10:0]),
     .halt(collide),
     .reset(reset)
     );
-   */
+    */
    
     vga vga_inst(
     .clk(divided_clk),
@@ -85,6 +87,7 @@ module top(
     .hsync(hsync),
     .vsync(vsync)
     );
+    
     rng rng_inst(
     .clk(divided_clk),
     .button(button),
