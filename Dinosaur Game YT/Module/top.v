@@ -98,12 +98,12 @@ module top(
     .clk(divided_clk),
     .sprite(runner)
     );
-    scroll scroll_inst(
-    .clk(divided_clk),
-    .pos(scrolladdr[10:0]),
-    .halt(collide),
-    .reset(reset)
-    );
+   // scroll scroll_inst(
+    //.clk(divided_clk),
+   // .pos(scrolladdr[10:0]),
+   // .halt(collide),
+    //.reset(reset)
+   // );
     vga vga_inst(
     .clk(divided_clk),
     .vaddress(vaddress),
