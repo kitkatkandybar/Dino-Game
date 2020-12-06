@@ -18,10 +18,15 @@ module top(
     wire [9:0] rightaddr;
     wire [9:0] upaddr;
     wire [9:0] downaddr;
-    //wire [4:0] random1;
+    wire [4:0] random1;
     wire [3:0] color;
     wire runner,reset,score;   
-    
+    wire [9:0] xmovaddr0;
+    wire [9:0] ymovaddr0;
+    wire [9:0] xmovaddr1;
+    wire [9:0] ymovaddr1;
+    wire [9:0] xmovaddr2;
+    wire [9:0] ymovaddr2;
     //Initializing internal regs for sprites
     reg [22:0] run1 [46:0];
     reg [22:0] run2 [46:0];
@@ -33,16 +38,17 @@ module top(
 //    reg [26:0] cactus2 [46:0];
 //    reg [12:0] cactus3 [48:0];
 //    reg [2:0] select,type;
+      reg [2:0] type;
     reg collide;
     
     //Initializing pixel layers data reg
     reg [4:0] layer;
-    
+    reg asteroid_layer;
     //Assigning outputs
     assign red = color;
     assign green = color;
     assign blue = color;
-    assign color = {4{layer[0]|layer[1]|layer[2]|layer[3]|layer[4]|score}};    
+    assign color = {4{layer[0]|layer[1]|layer[2]|layer[3]|layer[4]|score|asteroid_layer}};    
     assign reset = collide&(leftbtn|rightbtn|upbtn|downbtn);
     
     //Initializing sprite memory from files
@@ -58,8 +64,10 @@ module top(
 //    $readmemb("cactus3.mem", cactus3);
     collide <= 1;
 //    select <= 0;
-//    type <= 0;
+        type<= 0;
     end
+       
+ 
     
     //Initializing all submodules
     movement left_inst(
@@ -125,7 +133,40 @@ module top(
     .haddress(haddress),
     .pixel(score)
     );
-    
+  
+       
+    always@(posedge divided_clk)begin
+   type[0] <= random1[2];
+      type[1] <= random1[3];
+     type[2] <= random1[4];
+   end
+     asteroid_move first(
+    .clk(divided_clk),
+    .halt(collide),
+    .reset(reset),
+     .asteroid_on(type[0]),
+         .xmovaddr(xmovaddr0),
+         .ymovaddr(ymovaddr0)
+       
+    );
+    asteroid_move second(
+    .clk(divided_clk),
+    .halt(collide),
+    .reset(reset),
+        .asteroid_on(type[1]),
+        .xmovaddr(xmovaddr1),
+        .ymovaddr(ymovaddr1)
+       
+    );
+    asteroid_move third(
+    .clk(divided_clk),
+    .halt(collide),
+    .reset(reset),
+        .asteroid_on(type[2]),
+        .xmovaddr(xmovaddr2),
+        .ymovaddr(ymovaddr2)
+       
+    );
     //Main block
     always@(posedge divided_clk)begin
         collide <= (layer[0]&(layer[1]|layer[3]|layer[4]))|(collide&~(leftbtn|rightbtn|upbtn|downbtn)); //TODO:Test outside of always block
@@ -202,17 +243,39 @@ module top(
 //            if(scrolladdr[10:0] > 1117)begin
 //                select[2] <= 0;
             end
-        end //End of valid scan area
-//    end //End of main block
+        //end //End of valid scan area
+// 
+    if(vaddress < 480 && haddress < 640)begin //Check if video address is within scan area
+      
+        //asteroid 1
+        if(type[0])begin 
+            if((haddress-random1-xmovaddr0) > 200 && (haddress-random1-xmovaddr0)  < 239 && (vaddress-ymovaddr0) > 20 && (vaddress-ymovaddr0) < 58)begin //Check x and y position for printing asteroid sprite                      
+                asteroid_layer <= asteroid[vaddress-ymovaddr0 - 20][haddress-random1-xmovaddr0-200];
+                    end
+                    
+                end
+          
+        
+         //asteroid 2
+        if(type[1])begin 
+            if((haddress-random1-xmovaddr1) > 200 && (haddress-random1-xmovaddr1)  < 239 && (vaddress-ymovaddr1) > 20 && (vaddress-ymovaddr1) < 58)begin //Check x and y position for printing asteroid sprite                      
+                asteroid_layer <= asteroid[vaddress-ymovaddr1 - 20][haddress-random1-xmovaddr1-200];
+                    end
+        end 
+           
+    //asteroid 3
+        
+    if(type[2])begin 
+        if((haddress-random1-xmovaddr2) > 200 && (haddress-random1-xmovaddr2)  < 239 && (vaddress-ymovaddr2) > 20 && (vaddress-ymovaddr2) < 58)begin //Check x and y position for printing asteroid sprite                      
+            asteroid_layer <= asteroid[vaddress-ymovaddr2 - 20][haddress-random1-xmovaddr2-200];
+                    end
+                    
+                end
+            
     
-//    always@(posedge select[0])begin
-//        type[0] <= random1[2];
-//    end
-//    always@(posedge select[1])begin
-//        type[1] <= random1[3];
-//    end
-//    always@(posedge select[2])begin
-//        type[2] <= random1[4];
-//    end
     
+    end //end of  if(vaddress < 480 && haddress < 640)
+         
+           end //End of main always block
+ 
 endmodule
