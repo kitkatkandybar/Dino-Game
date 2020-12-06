@@ -249,7 +249,7 @@ module top(
       
         //asteroid 1
         if(type[0])begin 
-            if((haddress-random1-xmovaddr0) > 200 && (haddress-random1-xmovaddr0)  < 239 && (vaddress-ymovaddr0) > 20 && (vaddress-ymovaddr0) < 58)begin //Check x and y position for printing asteroid sprite                      
+            if((haddress-random1-xmovaddr0) > 100 && (haddress-random1-xmovaddr0)  < 139 && (vaddress-ymovaddr0) > 20 && (vaddress-ymovaddr0) < 58)begin //Check x and y position for printing asteroid sprite                      
                 asteroid_layer <= asteroid[vaddress-ymovaddr0 - 20][haddress-random1-xmovaddr0-200];
                     end
                     
@@ -266,7 +266,7 @@ module top(
     //asteroid 3
         
     if(type[2])begin 
-        if((haddress-random1-xmovaddr2) > 200 && (haddress-random1-xmovaddr2)  < 239 && (vaddress-ymovaddr2) > 20 && (vaddress-ymovaddr2) < 58)begin //Check x and y position for printing asteroid sprite                      
+        if((haddress-random1-xmovaddr2) > 300 && (haddress-random1-xmovaddr2)  < 339 && (vaddress-ymovaddr2) > 20 && (vaddress-ymovaddr2) < 58)begin //Check x and y position for printing asteroid sprite                      
             asteroid_layer <= asteroid[vaddress-ymovaddr2 - 20][haddress-random1-xmovaddr2-200];
                     end
                     
