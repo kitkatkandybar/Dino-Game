@@ -175,7 +175,7 @@ module top(
   
        
     always@(posedge divided_clk)begin
-        type[0] <= random1[0];
+        type[0] <= random1[2];
         type[1] <= random1[3];
         type[2] <= random1[4];
     end
