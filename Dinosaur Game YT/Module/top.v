@@ -340,8 +340,9 @@ module top(
             end 
 //          
 // 
+        always@(posedge divided_clk)begin
     if(vaddress < 480 && haddress < 640)begin //Check if video address is within scan area
-      
+      asteroid_layer<=0;
         //asteroid 1
         if(type[0])begin 
             if((haddress-xmovaddr0) > 100 && (haddress-xmovaddr0)  < 139 && (vaddress-ymovaddr0) > 100 && (vaddress-ymovaddr0) < 138)begin //Check x and y position for printing asteroid sprite                      
@@ -366,7 +367,7 @@ module top(
                     end
                     
                 end
-            
+    end
     
     
     end //end of  if(vaddress < 480 && haddress < 640)
