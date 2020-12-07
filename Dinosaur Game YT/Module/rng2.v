@@ -1,10 +1,10 @@
 
 module rng2(
-    input clk,reset,
+    input clk,reset, button,
     output reg [4:0] random1
     );
-    reg [11:0] counter1;
-    reg [9:0] counter2;
+    reg [11:0] count1;
+    reg [9:0] count2;
     //Set initial values
     initial begin
         random1 <= 5'b1;
