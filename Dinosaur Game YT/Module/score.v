@@ -25,23 +25,32 @@ module score(
     clock_divider COUNTER_CLK(.clk(clk), .divided_clk(counter_clk)); 
     
     always @ (posedge counter_clk) begin
-            if(reset == 1) begin
-            counter <= 0;
-            score[0] <= 0;
-            score[1] <= 0;
-            score[2] <= 0;
-            score[3] <= 0;
-        end
+            //if(reset == 1) begin
+            //counter <= 0;
+            //score[0] <= 0;
+            //score[1] <= 0;
+            //score[2] <= 0;
+            //score[3] <= 0;
+        //end
         // If the maximum score of 9999 is reached, then at the moment, stop incrementing
-        if (score[0] <= 9 && score[1] <= 9 && score[2] <= 9 && score[3] <= 9) begin
-        if(gs == 0 || gs == 2) begin //I CHANGED THIS
+        if(gs == 0) begin //I CHANGED THIS
             counter <= 0; //I CHANGED THIS
             score[0] <= 0; //I CHANGED THIS
             score[1] <= 0; //I CHANGED THIS
             score[2] <= 0; //I CHANGED THIS
             score[3] <= 0; //I CHANGED THIS
         end //I CHANGED THIS
-        if(halt == 0)begin
+        if(gs == 2) begin //I CHANGED THIS
+            counter <= counter; //I CHANGED THIS
+            score[0] <= score[0]; //I CHANGED THIS
+            score[1] <= score[1]; //I CHANGED THIS
+            score[2] <= score[2]; //I CHANGED THIS
+            score[3] <= score[3]; //I CHANGED THIS
+        end //I CHANGED THIS
+        if (gs == 1) begin
+        if (score[0] <= 9 && score[1] <= 9 && score[2] <= 9 && score[3] <= 9) begin
+        
+        if(halt == 0 && gs != 2)begin
             counter <= counter + 1;
             if(counter == 2517500)begin
                 score[0] = score[0] + 1;
@@ -59,6 +68,7 @@ module score(
                     score[3] = score[3] + 1;
                 end
             end
+        end
         end
         end
     end

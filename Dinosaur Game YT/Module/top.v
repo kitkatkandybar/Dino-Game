@@ -243,9 +243,9 @@ module top(
                 game_state = 1; 
             end 
             layer <= 5'b0; 
-            if (vaddress > 212 && vaddress < 268)begin 
-                if(haddress > 170 && haddress < 470)begin 
-                    layer[3] <= game_start[vaddress - 212][haddress - 170]; 
+            if (vaddress > 200 && vaddress < 255)begin 
+                if(haddress > 175 && haddress < 475)begin 
+                    layer[3] <= game_start[vaddress - 200][haddress - 175]; 
                 end 
         end 
     end 
@@ -444,9 +444,9 @@ module top(
                 end 
                     collide <= 0; 
                     layer <= 5'b0; 
-                if (vaddress > 184 && vaddress < 297)begin 
-                     if(haddress > 270 && haddress < 470)begin
-                         layer[3] <= game_over[vaddress - 184][haddress - 270];
+                 if (vaddress > 180 && vaddress < 293)begin 
+                 if(haddress > 220 && haddress < 420)begin
+                        layer[3] <= game_over[vaddress - 180][haddress-220];
                  end  
                  end 
             end
