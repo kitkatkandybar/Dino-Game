@@ -3,6 +3,7 @@
 module score(
     input [9:0] vaddress,haddress,
     input clk,halt,reset,
+    input [1:0] gs, //I CHANGED THIS
     output reg pixel
     );
     
@@ -27,6 +28,13 @@ module score(
             score[2] <= 0;
             score[3] <= 0;
         end
+        if(gs == 0 || gs == 2) begin //I CHANGED THIS
+            counter <= 0; //I CHANGED THIS
+            score[0] <= 0; //I CHANGED THIS
+            score[1] <= 0; //I CHANGED THIS
+            score[2] <= 0; //I CHANGED THIS
+            score[3] <= 0; //I CHANGED THIS
+        end //I CHANGED THIS
         if(halt == 0)begin
             counter <= counter + 1;
             if(counter == 2517500)begin
