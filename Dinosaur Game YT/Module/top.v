@@ -51,7 +51,7 @@ module top(
     assign blue = color;
     assign color = {4{layer[0]|layer[1]|layer[2]|layer[3]|layer[4]|score|asteroid_layer}};    
     assign reset = collide&(leftbtn|rightbtn|upbtn|downbtn);
-    assingn button=(leftbtn|rightbtn|upbtn|downbtn);
+    assign button=(leftbtn|rightbtn|upbtn|downbtn);
     //Initializing sprite memory from files
     initial begin 
     $readmemb("dino.mem", run1);
