@@ -144,7 +144,7 @@ module top(
     .clk(divided_clk),
     .halt(collide),
     .reset(reset),
-     .asteroid_on(type[0]),
+         .asteroid_on(1),
          .xmovaddr(xmovaddr0),
          .ymovaddr(ymovaddr0)
        
@@ -153,7 +153,7 @@ module top(
     .clk(divided_clk),
     .halt(collide),
     .reset(reset),
-        .asteroid_on(type[1]),
+        .asteroid_on(1),
         .xmovaddr(xmovaddr1),
         .ymovaddr(ymovaddr1)
        
@@ -162,7 +162,7 @@ module top(
     .clk(divided_clk),
     .halt(collide),
     .reset(reset),
-        .asteroid_on(type[2]),
+        .asteroid_on(1),
         .xmovaddr(xmovaddr2),
         .ymovaddr(ymovaddr2)
        
