@@ -444,9 +444,9 @@ module top(
                 end 
                     collide <= 0; 
                     layer <= 5'b0; 
-                 if (vaddress > 205 && vaddress < 240)begin 
-                 if(haddress > 300 && haddress < 340)begin
-                        layer[3] <= game_over[vaddress - 205][haddress - 300];
+                if (vaddress > 184 && vaddress < 297)begin 
+                     if(haddress > 270 && haddress < 470)begin
+                         layer[3] <= game_over[vaddress - 205][haddress - 270];
                  end  
                  end 
             end
