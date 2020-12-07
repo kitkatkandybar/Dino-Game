@@ -162,6 +162,11 @@ module top(
     .button(button),
     .random1(random1)
     );
+     rng2 rng_inst(
+    .clk(divided_clk),
+         .reset(reset),
+    .random1(random1)
+    );
     
     score score_inst(
     .clk(clk),
