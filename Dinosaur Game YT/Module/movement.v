@@ -3,7 +3,7 @@
 //This script is responsible for generating the height data for the jumping dinosaur
 
 module movement(
-    input clk,button,halt,reset,
+    input clk,button,halt,reset,gs,//I CHANGED THIS
     output reg [9:0] movaddr
     );
     
@@ -25,6 +25,8 @@ module movement(
     
     //Main block
     always@(posedge clk)begin
+        if (gs == 0) //I CHANGED THIS
+            movaddr = 0; //I CHANGED THIS
         if(reset == 1)begin
             millisecond <= 0;
             second <= 0;
@@ -42,6 +44,7 @@ module movement(
                 end
                 if(second == 1)begin
                     second <= 0;
+                    
                     movaddr <= movaddr + 1; 
                 end
             end
