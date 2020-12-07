@@ -58,7 +58,7 @@ module top(
     reg [12:0] cactus16 [48:0];
     reg [12:0] cactus17 [48:0];
     
-    reg [39:0] game_start [22:0]; 
+    reg [299:0] game_start [55:0]; 
     reg [199:0] game_over [112:0]; 
     reg [1:0] game_state;
     
@@ -243,9 +243,9 @@ module top(
                 game_state = 1; 
             end 
             layer <= 5'b0; 
-            if (vaddress > 210 && vaddress < 233)begin 
-                if(haddress > 300 && haddress < 340)begin 
-                    layer[3] <= game_start[vaddress - 210][haddress - 300]; 
+            if (vaddress > 212 && vaddress < 268)begin 
+                if(haddress > 170 && haddress < 470)begin 
+                    layer[3] <= game_start[vaddress - 212][haddress - 170]; 
                 end 
         end 
     end 
