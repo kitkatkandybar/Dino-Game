@@ -19,7 +19,7 @@ module rng(
     always@(posedge clk)begin
         
         if(button)begin //If the jump button is pressed then increment this pseudo-random counter
-            if (count1 == (10*251250)) begin
+            if (count1 == (3*251250)) begin
                 count1 <= 0;
             random1[0] <= random1[1]^random1[4];
             random1[1] <= random1[0];
