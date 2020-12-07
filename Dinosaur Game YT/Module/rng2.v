@@ -17,8 +17,8 @@ module rng2(
     always@(posedge clk)begin
         if(button)begin //If the jump button is pressed then increment this pseudo-random counter
             
-             count1 <= count1+1;
-            counter
+            count1 <= count1+1;
+            //counter
             random1[0] <= random1[1]^random1[4];
             random1[1] <= random1[0];
             random1[2] <= random1[1];
