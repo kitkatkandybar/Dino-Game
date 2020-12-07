@@ -121,7 +121,7 @@ module top(
     );
     rng rng_inst(
     .clk(divided_clk),
-    .button(button),
+    .button(reset),
     .random1(random1)
     );
     
