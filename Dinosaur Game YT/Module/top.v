@@ -59,7 +59,7 @@ module top(
     reg [12:0] cactus17 [48:0];
     
     reg [39:0] game_start [22:0]; 
-    reg [39:0] game_over [34:0]; 
+    reg [112:0] game_over [199:0]; 
     reg [1:0] game_state;
     
     reg [2:0] type;
