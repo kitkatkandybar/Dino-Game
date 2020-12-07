@@ -31,7 +31,7 @@ module top(
     reg [22:0] run1 [46:0];
     reg [22:0] run2 [46:0];
     reg [22:0] death [46:0];
-    reg [37:0] asteroid [37:0];
+    reg [36:0] asteroid [36:0];
     reg [40:0] fire [40:0];
 //    reg [255:0] floor [5:0];
 //    reg [26:0] cactus1 [46:0];
@@ -250,7 +250,7 @@ module top(
         //asteroid 1
         if(1)begin 
             if((haddress-xmovaddr0) > 100 && (haddress-xmovaddr0)  < 139 && (vaddress-ymovaddr0) > 100 && (vaddress-ymovaddr0) < 138)begin //Check x and y position for printing asteroid sprite                      
-                asteroid_layer <= asteroid[vaddress-ymovaddr0 - 20][haddress-xmovaddr0-200];
+                asteroid_layer <= asteroid[vaddress-ymovaddr0 - 20][haddress-xmovaddr0-100];
                     end
                     
                 end
@@ -259,7 +259,7 @@ module top(
          //asteroid 2
         if(1)begin 
             if((haddress-xmovaddr1) > 200 && (haddress-xmovaddr1)  < 239 && (vaddress-ymovaddr1) > 100 && (vaddress-ymovaddr1) < 138)begin //Check x and y position for printing asteroid sprite                      
-                asteroid_layer <= asteroid[vaddress-ymovaddr1 - 20][haddress-xmovaddr1-200];
+                asteroid_layer <= asteroid[vaddress-ymovaddr1 - 100][haddress-xmovaddr1-200];
                     end
         end 
            
@@ -267,7 +267,7 @@ module top(
         
         if(1)begin 
             if((haddress-xmovaddr2) > 300 && (haddress-xmovaddr2)  < 339 && (vaddress-ymovaddr2) > 100 && (vaddress-ymovaddr2) < 138)begin //Check x and y position for printing asteroid sprite                      
-            asteroid_layer <= asteroid[vaddress-ymovaddr2 - 20][haddress-xmovaddr2-200];
+                asteroid_layer <= asteroid[vaddress-ymovaddr2 - 100][haddress-xmovaddr2-300];
                     end
                     
                 end
