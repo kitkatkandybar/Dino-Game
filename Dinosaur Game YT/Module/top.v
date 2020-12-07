@@ -64,6 +64,7 @@ module top(
     //Initializing pixel layers data reg
     reg [4:0] layer;
     reg asteroid_layer;
+    reg count_direc = 0, count_direc1 = 1, count_direc2 = 0; //I CHANGED THIS
 
     
     //Assigning outputs
@@ -181,10 +182,11 @@ module top(
     end
      
      asteroid_move first(
-         .clk(divided_clk),
+    .clk(divided_clk),
     .halt(collide),
     .reset(reset),
-    .asteroid_on(1),
+    .asteroid_on(1), 
+    .new_count(0), //I CHANGED THIS
     .xmovaddr(xmovaddr0),
     .ymovaddr(ymovaddr0)   
     );
@@ -194,6 +196,7 @@ module top(
     .halt(collide),
     .reset(reset),
     .asteroid_on(1),
+    .new_count(1), //I CHANGED THIS
     .xmovaddr(xmovaddr1),
     .ymovaddr(ymovaddr1)   
     );
@@ -203,12 +206,14 @@ module top(
     .halt(collide),
     .reset(reset),
     .asteroid_on(1),
+    .new_count(2), //I CHANGED THIS
     .xmovaddr(xmovaddr2),
     .ymovaddr(ymovaddr2)   
     );
     
     //Main block
     always@(posedge divided_clk)begin
+        
         if (game_state == 0) begin 
             if (leftbtn == 1 || rightbtn == 1 || upbtn == 1 || downbtn == 1) begin 
                 game_state = 1; 
@@ -325,6 +330,59 @@ module top(
             end 
             
             end
+            //I CHANGED THIS FROM HERE
+            if(vaddress < 480 && haddress < 640) begin //Check if video address is within scan area
+      asteroid_layer <= 0; 
+        //asteroid 1
+            if (xmovaddr0 == 0 && ymovaddr0 == 0) begin
+                count_direc = ! count_direc;
+            end
+            if (xmovaddr0 == 0 && ymovaddr0 == 0) begin
+                count_direc1 = ! count_direc1;
+            end
+            if (xmovaddr0 == 0 && ymovaddr0 == 0) begin
+                count_direc2 = ! count_direc2;
+            end
+            if (count_direc == 0) begin
+            if((haddress-xmovaddr0) > 100 && (haddress-xmovaddr0)  < 139 && (vaddress-ymovaddr0) > 0 && (vaddress-ymovaddr0) < 38)begin //Check x and y position for printing asteroid sprite                      
+                asteroid_layer <= asteroid[vaddress-ymovaddr0 +0][haddress-xmovaddr0-100];
+                    end
+            end
+              
+            if (count_direc == 1) begin
+            if((haddress+xmovaddr0) > 100 && (haddress+xmovaddr0)  < 139 && (vaddress-ymovaddr0) > 0 && (vaddress-ymovaddr0) < 38)begin //Check x and y position for printing asteroid sprite                      
+                asteroid_layer <= asteroid[vaddress-ymovaddr0 +0][haddress+xmovaddr0-100];
+                    end
+            end
+         //asteroid 2
+            if (count_direc1 == 0) begin
+            if((haddress-xmovaddr1) > 400 && (haddress-xmovaddr1)  < 439 && (vaddress-ymovaddr1) > 0 && (vaddress-ymovaddr1) < 38)begin //Check x and y position for printing asteroid sprite                      
+                asteroid_layer <= asteroid[vaddress-ymovaddr1 - 0][haddress-xmovaddr1-400];
+                    end
+            end
+             
+            if (count_direc1 == 1) begin
+            if((haddress+xmovaddr1) > 400 && (haddress+xmovaddr1)  < 439 && (vaddress-ymovaddr1) > 0 && (vaddress-ymovaddr1) < 38)begin //Check x and y position for printing asteroid sprite                      
+                asteroid_layer <= asteroid[vaddress-ymovaddr1 - 0][haddress+xmovaddr1-400];
+                    end
+            end
+            
+    //asteroid 3
+        
+            if (count_direc2 == 0) begin
+            if((haddress-xmovaddr2) > 550 && (haddress-xmovaddr2)  < 589 && (vaddress-ymovaddr2) > 0 && (vaddress-ymovaddr2) < 38)begin //Check x and y position for printing asteroid sprite                      
+                asteroid_layer <= asteroid[vaddress-ymovaddr2 - 0][haddress-xmovaddr2-550];
+                    end
+            end 
+                  
+            if (count_direc2 == 1) begin
+            if((haddress+xmovaddr2) > 550 && (haddress+xmovaddr2)  < 589 && (vaddress-ymovaddr2) > 0 && (vaddress-ymovaddr2) < 38)begin //Check x and y position for printing asteroid sprite                      
+                asteroid_layer <= asteroid[vaddress-ymovaddr2 - 0][haddress+xmovaddr2-550];
+                    end
+            end      
+                
+       end
+            //TO HERE
             end 
             
             if (game_state == 2) begin
@@ -343,34 +401,8 @@ module top(
 
 // 
         always@(posedge divided_clk)begin
-    if(vaddress < 480 && haddress < 640) begin //Check if video address is within scan area
-      asteroid_layer <= 0; 
-        //asteroid 1
-        if(type[0])begin 
-            if((haddress-xmovaddr0) > 100 && (haddress-xmovaddr0)  < 139 && (vaddress-ymovaddr0) > 100 && (vaddress-ymovaddr0) < 138)begin //Check x and y position for printing asteroid sprite                      
-                asteroid_layer <= asteroid[vaddress-ymovaddr0 - 100][haddress-xmovaddr0-100];
-                    end
-                    
-                end
-          
-        
-         //asteroid 2
-        if(type[1])begin 
-            if((haddress-(3*xmovaddr1)) > 200 && (haddress-(3*xmovaddr1))  < 239 && (vaddress-ymovaddr1) > 100 && (vaddress-ymovaddr1) < 138)begin //Check x and y position for printing asteroid sprite                      
-                asteroid_layer <= asteroid[vaddress-ymovaddr1 - 100][haddress-(3*xmovaddr1)-200];
-                    end
-        end 
-           
-    //asteroid 3
-        
-        if(type[2])begin 
-            if((haddress-xmovaddr2) > 300 && (haddress-xmovaddr2)  < 339 && (vaddress-ymovaddr2) > 100 && (vaddress-ymovaddr2) < 138)begin //Check x and y position for printing asteroid sprite                      
-                asteroid_layer <= asteroid[vaddress-ymovaddr2 - 100][haddress-xmovaddr2-300];
-                    end
-                    
-                end
-                
-       end//end of  if(vaddress < 480 && haddress < 640)
+    //end of  if(vaddress < 480 && haddress < 640)
          
        end//End of main always block
 endmodule
+
