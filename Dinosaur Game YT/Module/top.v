@@ -20,6 +20,7 @@ module top(
     wire [9:0] downaddr;
     wire [4:0] random1;
     wire [3:0] color;
+    wire button;
     wire runner,reset,score;   
     wire [9:0] xmovaddr0;
     wire [9:0] ymovaddr0;
@@ -50,7 +51,7 @@ module top(
     assign blue = color;
     assign color = {4{layer[0]|layer[1]|layer[2]|layer[3]|layer[4]|score|asteroid_layer}};    
     assign reset = collide&(leftbtn|rightbtn|upbtn|downbtn);
-    
+    assingn button=(leftbtn|rightbtn|upbtn|downbtn);
     //Initializing sprite memory from files
     initial begin 
     $readmemb("dino.mem", run1);
@@ -121,7 +122,7 @@ module top(
     );
     rng rng_inst(
     .clk(divided_clk),
-    .button(reset),
+      .button(button),
     .random1(random1)
     );
     
