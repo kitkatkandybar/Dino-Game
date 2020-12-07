@@ -181,7 +181,7 @@ module top(
     end
      
      asteroid_move first(
-    .clk(divided_clk),
+         .clk(divided_clk),
     .halt(collide),
     .reset(reset),
     .asteroid_on(1),
