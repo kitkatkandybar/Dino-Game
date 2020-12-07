@@ -248,8 +248,8 @@ module top(
     if(vaddress < 480 && haddress < 640)begin //Check if video address is within scan area
       
         //asteroid 1
-        if(type[0])begin 
-            if((haddress-xmovaddr0) > 100 && (haddress-xmovaddr0)  < 139 && (vaddress-ymovaddr0) > 20 && (vaddress-ymovaddr0) < 58)begin //Check x and y position for printing asteroid sprite                      
+        if(1)begin 
+            if((haddress-xmovaddr0) > 100 && (haddress-xmovaddr0)  < 139 && (vaddress-ymovaddr0) > 100 && (vaddress-ymovaddr0) < 138)begin //Check x and y position for printing asteroid sprite                      
                 asteroid_layer <= asteroid[vaddress-ymovaddr0 - 20][haddress-xmovaddr0-200];
                     end
                     
@@ -257,16 +257,16 @@ module top(
           
         
          //asteroid 2
-        if(type[1])begin 
-            if((haddress-xmovaddr1) > 200 && (haddress-xmovaddr1)  < 239 && (vaddress-ymovaddr1) > 20 && (vaddress-ymovaddr1) < 58)begin //Check x and y position for printing asteroid sprite                      
+        if(1)begin 
+            if((haddress-xmovaddr1) > 200 && (haddress-xmovaddr1)  < 239 && (vaddress-ymovaddr1) > 100 && (vaddress-ymovaddr1) < 138)begin //Check x and y position for printing asteroid sprite                      
                 asteroid_layer <= asteroid[vaddress-ymovaddr1 - 20][haddress-xmovaddr1-200];
                     end
         end 
            
     //asteroid 3
         
-    if(type[2])begin 
-        if((haddress-xmovaddr2) > 300 && (haddress-xmovaddr2)  < 339 && (vaddress-ymovaddr2) > 20 && (vaddress-ymovaddr2) < 58)begin //Check x and y position for printing asteroid sprite                      
+        if(1)begin 
+            if((haddress-xmovaddr2) > 300 && (haddress-xmovaddr2)  < 339 && (vaddress-ymovaddr2) > 100 && (vaddress-ymovaddr2) < 138)begin //Check x and y position for printing asteroid sprite                      
             asteroid_layer <= asteroid[vaddress-ymovaddr2 - 20][haddress-xmovaddr2-200];
                     end
                     
