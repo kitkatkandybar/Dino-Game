@@ -18,7 +18,7 @@ module rng(
     //Main block, generates a pseudo-random output
     always@(posedge clk)begin
         
-        if(reset)begin //If the jump button is pressed then increment this pseudo-random counter
+        if(button)begin //If the jump button is pressed then increment this pseudo-random counter
             if (counter== (5*251250)) begin
             random1[0] <= random1[1]^random1[4];
             random1[1] <= random1[0];
