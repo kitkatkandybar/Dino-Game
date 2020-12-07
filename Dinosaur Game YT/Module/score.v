@@ -3,7 +3,7 @@
 module score(
     input [9:0] vaddress,haddress,
     input clk,halt,reset,
-    input [1:0] gs, 
+    input [1:0] gs, //I CHANGED THIS
     output reg pixel
     );
     
@@ -20,21 +20,27 @@ module score(
         $readmemb("score.mem", digits);
     end
     
-    always@(posedge clk)begin
-        if(reset == 1) begin
+    // Reduce scoring counter speed
+    wire counter_clk; 
+    clock_divider COUNTER_CLK(.clk(clk), .divided_clk(counter_clk)); 
+    
+    always @ (posedge counter_clk) begin
+            if(reset == 1) begin
             counter <= 0;
             score[0] <= 0;
             score[1] <= 0;
             score[2] <= 0;
             score[3] <= 0;
         end
-        if(gs == 0 || gs == 2) begin 
-            counter <= 0; 
-            score[0] <= 0; 
-            score[1] <= 0; 
-            score[2] <= 0; 
-            score[3] <= 0; 
-        end 
+        // If the maximum score of 9999 is reached, then at the moment, stop incrementing
+        if (score[0] <= 9 && score[1] <= 9 && score[2] <= 9 && score[3] <= 9) begin
+        if(gs == 0 || gs == 2) begin //I CHANGED THIS
+            counter <= 0; //I CHANGED THIS
+            score[0] <= 0; //I CHANGED THIS
+            score[1] <= 0; //I CHANGED THIS
+            score[2] <= 0; //I CHANGED THIS
+            score[3] <= 0; //I CHANGED THIS
+        end //I CHANGED THIS
         if(halt == 0)begin
             counter <= counter + 1;
             if(counter == 2517500)begin
@@ -54,6 +60,10 @@ module score(
                 end
             end
         end
+        end
+    end
+    
+    always@(posedge clk)begin
         pixel <= 0;
         if(vaddress < 480 && haddress < 640) begin
             if(vaddress > 20 && vaddress < 73)begin
@@ -73,3 +83,4 @@ module score(
         end
     end
 endmodule
+
