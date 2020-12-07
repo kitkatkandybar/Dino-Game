@@ -156,6 +156,7 @@ module top(
     .hsync(hsync),
     .vsync(vsync)
     );
+    
     rng rng_inst(
     .clk(divided_clk),
     .button(button),
@@ -185,26 +186,25 @@ module top(
     .reset(reset),
     .asteroid_on(1),
     .xmovaddr(xmovaddr0),
-    .ymovaddr(ymovaddr0)
-       
+    .ymovaddr(ymovaddr0)   
     );
+    
     asteroid_move second(
     .clk(divided_clk),
     .halt(collide),
     .reset(reset),
     .asteroid_on(1),
     .xmovaddr(xmovaddr1),
-    .ymovaddr(ymovaddr1)
-       
+    .ymovaddr(ymovaddr1)   
     );
+    
     asteroid_move third(
     .clk(divided_clk),
     .halt(collide),
     .reset(reset),
     .asteroid_on(1),
     .xmovaddr(xmovaddr2),
-    .ymovaddr(ymovaddr2)
-       
+    .ymovaddr(ymovaddr2)   
     );
     
     //Main block
@@ -218,8 +218,8 @@ module top(
                 if(haddress > 300 && haddress < 340)begin 
                     layer[3] <= game_start[vaddress - 210][haddress - 300]; 
                 end 
-            end 
         end 
+    end 
         if (game_state == 1) begin 
         collide <= (layer[0]&(layer[1]|layer[3]|layer[4]))|(collide&~(leftbtn|rightbtn|upbtn|downbtn));
         
@@ -325,19 +325,19 @@ module top(
             
             end
             end 
+            
             if (game_state == 2) begin
                 if (debug == 1) begin 
                     game_state = 0;
                 end 
                     collide <= 0; 
                     layer <= 5'b0; 
-                if (vaddress > 205 && vaddress < 240)begin 
+                 if (vaddress > 205 && vaddress < 240)begin 
                  if(haddress > 300 && haddress < 340)begin
                         layer[3] <= game_over[vaddress - 205][haddress - 300];
                  end 
                  end 
             end 
-        end 
 //          
 // 
     if(vaddress < 480 && haddress < 640)begin //Check if video address is within scan area
