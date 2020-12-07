@@ -250,7 +250,7 @@ module top(
         //asteroid 1
         if(type[0])begin 
             if((haddress-xmovaddr0) > 100 && (haddress-xmovaddr0)  < 139 && (vaddress-ymovaddr0) > 100 && (vaddress-ymovaddr0) < 138)begin //Check x and y position for printing asteroid sprite                      
-                asteroid_layer <= asteroid[vaddress-ymovaddr0 - 20][haddress-xmovaddr0-100];
+                asteroid_layer <= asteroid[vaddress-ymovaddr0 - 100][haddress-xmovaddr0-100];
                     end
                     
                 end
