@@ -220,6 +220,7 @@ module top(
                 end 
         end 
     end 
+        
         if (game_state == 1) begin 
         collide <= (layer[0]&(layer[1]|layer[3]|layer[4]))|(collide&~(leftbtn|rightbtn|upbtn|downbtn));
         
@@ -335,10 +336,11 @@ module top(
                  if (vaddress > 205 && vaddress < 240)begin 
                  if(haddress > 300 && haddress < 340)begin
                         layer[3] <= game_over[vaddress - 205][haddress - 300];
+                 end  
                  end 
-                 end 
-            end 
-//          
+            end
+        end         
+
 // 
         always@(posedge divided_clk)begin
     if(vaddress < 480 && haddress < 640)begin //Check if video address is within scan area
@@ -367,10 +369,8 @@ module top(
                     end
                     
                 end
-    end
-    
-    
-    end //end of  if(vaddress < 480 && haddress < 640)
+                
+       end//end of  if(vaddress < 480 && haddress < 640)
          
-           end //End of main always block
+       end//End of main always block
 endmodule
