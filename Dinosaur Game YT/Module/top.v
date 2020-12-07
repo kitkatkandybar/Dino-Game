@@ -175,7 +175,7 @@ module top(
   
        
     always@(posedge divided_clk)begin
-        type[0] <= random1[2];
+        type[0] <= random1[0];
         type[1] <= random1[3];
         type[2] <= random1[4];
     end
@@ -222,7 +222,7 @@ module top(
     end 
         
         if (game_state == 1) begin 
-        collide <= (layer[0]&(layer[1]|layer[3]|layer[4]))|(collide&~(leftbtn|rightbtn|upbtn|downbtn));
+        collide <= (layer[0]&(layer[1]|layer[3]|layer[4]|asteroid_layer))|(collide&~(leftbtn|rightbtn|upbtn|downbtn));
         
         layer <= 5'b0; //Set all pixel layers to 0
         
@@ -343,12 +343,12 @@ module top(
 
 // 
         always@(posedge divided_clk)begin
-    if(vaddress < 480 && haddress < 640)begin //Check if video address is within scan area
-      asteroid_layer<=0;
+    if(vaddress < 480 && haddress < 640) begin //Check if video address is within scan area
+      asteroid_layer <= 0; 
         //asteroid 1
         if(type[0])begin 
-            if((haddress-xmovaddr0) > 100 && (haddress-xmovaddr0)  < 139 && (vaddress-(3*ymovaddr0)) > 100 && (vaddress-(3*ymovaddr0)) < 138)begin //Check x and y position for printing asteroid sprite                      
-                asteroid_layer <= asteroid[vaddress-(3*ymovaddr0) - 100][haddress-xmovaddr0-100];
+            if((haddress-xmovaddr0) > 100 && (haddress-xmovaddr0)  < 139 && (vaddress-ymovaddr0) > 100 && (vaddress-ymovaddr0) < 138)begin //Check x and y position for printing asteroid sprite                      
+                asteroid_layer <= asteroid[vaddress-ymovaddr0 - 100][haddress-xmovaddr0-100];
                     end
                     
                 end
