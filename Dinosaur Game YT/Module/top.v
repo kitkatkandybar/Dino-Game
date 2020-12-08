@@ -246,14 +246,13 @@ module top(
     end 
         
         if (game_state == 1) begin 
-        collide <= (layer[0]&(layer[1]|layer[3]|layer[4]|asteroid_layer))|(collide&~(leftbtn|rightbtn|upbtn|downbtn));
+        collide <= (layer[0]&(layer[1]|layer[3]|layer[4]|asteroid_layer))|(collide&~(leftbtn|rightbtn|upbtn|downbtn)); // collision mechanics
         
         layer <= 5'b0; // Set all pixel layers to 0
         
             if(vaddress < 480 && haddress < 640)begin // Check if video address is within scan area
             if((haddress+leftaddr-rightaddr) > 200 && (haddress+leftaddr-rightaddr)  < 223 && (vaddress-downaddr+upaddr) > 200 && (vaddress-downaddr+upaddr) < 247)begin // Check x and y position for printing dinosaur sprite
                 // Alternate between running types or death character
-            
                 if(collide)begin 
                     layer[0] <= death[vaddress-downaddr+upaddr - 200][haddress+leftaddr-rightaddr-200];
                     game_state = 2; 
