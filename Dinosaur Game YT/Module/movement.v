@@ -8,31 +8,30 @@ module movement(
     );
     
     //Initialize internal regs
-    reg [17:0] millisecond;
-    reg [8:0] second;
+    reg [17:0] millisecond; //register for milliseconds
+    reg [8:0] second; //register for one second
     
     initial begin
-        millisecond <= 0;
+        millisecond <= 0; //initialize both to zero
         second <= 0;
     end
     
     //Main block
     always@(posedge clk)begin
-        if (gs == 0)
-            movaddr = 0;
-        if(reset == 1)begin
+        if (gs == 0) //resets the dino to starting position when game state is zero (game start)
+            movaddr <= 0;
+        if(reset == 1)begin //if reset is pushed, reset the counters for seconds and milliseconds
             millisecond <= 0;
             second <= 0;
-            //bool <= 0;
         end
-        if(halt == 0)begin
-            if(button == 1)begin
+        if(halt == 0)begin //if the dino does not collide
+            if(button == 1)begin //if the input button is being pushed, begin the counter
                 millisecond <= millisecond + 1;
-                if(millisecond == 251250)begin
+                if(millisecond == 251250)begin //increments seconds every 251250 milliseconds
                     millisecond <= 0;
                     second <= second + 1;
                 end
-                if(second == 1)begin
+                if(second == 1)begin //when seconds equals 1, resets seconds and increments the movaddr
                     second <= 0;
                     
                     movaddr <= movaddr + 1; 
