@@ -4,20 +4,14 @@ module Keyboard(
 	input CLK,	//board clock
    input PS2_CLK,	//keyboard clock and data signals
    input PS2_DATA,
-//	output reg scan_err,			//These can be used if the Keyboard module is used within a another module
-//	output reg [10:0] scan_code,
-//	output reg [3:0]COUNT,
-//	output reg TRIG_ARR,
-//	output reg [7:0]CODEWORD,
-   output reg [3:0] BUTTON	//8 LEDs
+   output reg [3:0] BUTTON	//4 bit button
    );
 
 	wire [7:0] ARROW_UP = 8'h75;	//codes for arrows
 	wire [7:0] ARROW_DOWN = 8'h72;
 	wire [7:0] ARROW_LEFT = 8'h6B;
 	wire [7:0] ARROW_RIGHT = 8'h74;
-	//wire [7:0] EXTENDED = 8'hE0;	//codes 
-	//wire [7:0] RELEASED = 8'hF0;
+
 
 	reg read;				//this is 1 if still waits to receive more bits 
 	reg [11:0] count_reading;		//this is used to detect how much time passed since it received the previous codeword
@@ -96,7 +90,6 @@ module Keyboard(
 	end
 	end
 
-
 	always @(posedge CLK) begin
 		if (TRIGGER) begin					//if the 250 times slower than board clock triggers
 			if (TRIG_ARR) begin				//and if a full packet of 11 bits was received
@@ -113,14 +106,11 @@ module Keyboard(
 	end
 	
 	always @(posedge CLK) begin
-//	if (TRIGGER) begin
-//		if (TRIG_ARR) begin
-//		LED<=scan_code[8:1];			//You can put the code on the LEDs if you want to, that's up to you 
-		if (CODEWORD == ARROW_UP)	begin			//if the CODEWORD has the same code as the ARROW_UP code
-			BUTTON <= 4'b1000;					//count up the LED register to light up LEDs
+		if (CODEWORD == ARROW_UP)	begin			
+			BUTTON <= 4'b1000;					
 	   end
-		else if (CODEWORD == ARROW_DOWN)	begin		//or if the ARROW_DOWN was pressed, then
-			BUTTON <= 4'b0100;					//count down LED register 
+		else if (CODEWORD == ARROW_DOWN)	begin		
+			BUTTON <= 4'b0100;					
 		end
 		else if (CODEWORD == ARROW_RIGHT) begin
 		    BUTTON <= 4'b0010;
@@ -128,55 +118,6 @@ module Keyboard(
 		else if (CODEWORD == ARROW_LEFT) begin
 		    BUTTON <= 4'b0001; 
 		end
-
-			//if (CODEWORD == EXTENDED)			//For example you can check here if specific codewords were received
-			//if (CODEWORD == RELEASED)
-		//end
-//	end
 	end
 
 endmodule
-
-
-
-//This code didn't work very well, but it was the first implementation of the module… Maybe you can learn something from it
-/*
-	always @(negedge PS2_CLK) begin
-		read <= 1;
-		scan_err <= 0;
-		scan_code[10:0] <= {PS2_DATA, scan_code[10:1]};
-		if (COUNT < 11)
-			COUNT <= COUNT + 1;
-		else if (COUNT == 11) begin
-			COUNT <= 0;
-			read <= 0;
-			//calculate scan_err
-			if (!scan_code[10] || scan_code[0] || !(scan_code[1]^scan_code[2]^scan_code[3]^scan_code[4]
-				^scan_code[5]^scan_code[6]^scan_code[7]^scan_code[8]
-				^scan_code[9]))
-				scan_err <= 1;
-			else 
-				scan_err <= 0;
-		end 
-		else begin
-	
-			if (COUNT < 11 && count_reading >= 1000000) begin
-				COUNT <= 0;
-				read <= 0;
-			end
-		end
-
-	end
-
-	always@(posedge CLK) begin
-		if (COUNT != PREVIOUS_STATE) begin
-			if (COUNT == 11) begin
-				TRIG_ARR <= 1;
-			end
-			else begin
-				TRIG_ARR <= 0;
-			end
-		end
-		PREVIOUS_STATE <= COUNT;
-	end
-*/
