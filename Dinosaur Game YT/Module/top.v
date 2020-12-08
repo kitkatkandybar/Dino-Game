@@ -167,12 +167,6 @@ module top(
     .haddress(haddress),
     .pixel(score)
     );
-       
-    always@(posedge divided_clk)begin
-        type[0] <= random1[0];
-        type[1] <= random1[3];
-        type[2] <= random1[4];
-    end
      
      asteroid_move first(
     .clk(divided_clk),
