@@ -27,13 +27,13 @@ module asteroid_move (
     output reg [9:0] ymovaddr
     );
     
-    //Initialize internal regs
+    //Initialize Internal Regs
     reg [17:0] count1;
     reg [2:0] count2; 
     reg count_val = 0;
     //reg bool;
     
-    //Initializing regs and loading the y data into memory
+    //Initializing Regs
     initial begin
         count1<=0;
         count2 <= new_count;
@@ -43,7 +43,7 @@ module asteroid_move (
     
     //Main block
     always@(posedge clk)begin
-        
+        //Sets each asteroid to a specific speed. Only runs at the start of the module.
         if (count2 == 0 && new_count == 0 && count_val == 0) begin 
             count2 = 0; 
             count_val = 1;
@@ -65,6 +65,7 @@ module asteroid_move (
             count_val = 1;
         end
         
+        //Increments count2 to change speed each time the asteroid returns to the start position.
         if (xmovaddr == 0 && ymovaddr == 0) begin 
         
             count2 = count2 + 1; 
@@ -79,6 +80,8 @@ module asteroid_move (
             xmovaddr <= 0;
             ymovaddr <= 0;
         end
+        
+        //Changes position of the asteroid. Different speeds based on count2 value.
         if(halt == 0)begin
         if(asteroid_on==1)begin
                 if (count2 == 0) begin 
