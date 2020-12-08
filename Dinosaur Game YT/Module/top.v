@@ -69,7 +69,6 @@ module top(
     reg asteroid_layer;
     reg count_direc = 0, count_direc1 = 1, count_direc2 = 1, count_direc3 = 1, count_direc4 = 0; 
 
-    
     // Assigning outputs
     assign red = color;
     assign green = color;
@@ -230,8 +229,8 @@ module top(
                 if(haddress > 175 && haddress < 475)begin 
                     layer[3] <= game_start[vaddress - 200][haddress - 175]; 
                 end 
+            end 
         end 
-    end 
         
         if (game_state == 1) begin 
         collide <= (layer[0]&(layer[1]|layer[3]|layer[4]|asteroid_layer))|(collide&~(leftbtn|rightbtn|upbtn|downbtn)); // collision mechanics
