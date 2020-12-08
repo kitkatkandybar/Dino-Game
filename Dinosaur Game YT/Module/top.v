@@ -33,7 +33,7 @@ module top(
     wire [9:0] xmovaddr4;
     wire [8:0] ymovaddr4;
     
-    //Initializing internal regs for sprites
+    // Initializing internal regs for sprites
     reg [22:0] run1 [46:0];
     reg [22:0] run2 [46:0];
     reg [22:0] death [46:0];
@@ -67,7 +67,7 @@ module top(
     // Initializing pixel layers data reg
     reg [4:0] layer;
     reg asteroid_layer;
-    reg count_direc = 0, count_direc1 = 1, count_direc2 = 1, count_direc3 = 1, count_direc4 = 0; //I CHANGED THIS
+    reg count_direc = 0, count_direc1 = 1, count_direc2 = 1, count_direc3 = 1, count_direc4 = 0; 
 
     
     // Assigning outputs
