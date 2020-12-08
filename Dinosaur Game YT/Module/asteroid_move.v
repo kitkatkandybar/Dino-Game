@@ -84,6 +84,7 @@ module asteroid_move (
         //Changes position of the asteroid. Different speeds based on count2 value.
         if(halt == 0)begin
         if(asteroid_on==1)begin
+                //Speed 1
                 if (count2 == 0) begin 
                 count1 <= count1 + 1; 
                 if(count1 == 251250)begin
@@ -92,6 +93,7 @@ module asteroid_move (
                     ymovaddr <= ymovaddr+1;
                 end 
                 end
+                //Speed 2
                 if (count2 == 1) begin
                 count1 <= count1 + 1;
                 if(count1 == 251250)begin
@@ -100,6 +102,7 @@ module asteroid_move (
                     ymovaddr <= ymovaddr+3;
                 end
                 end
+                //Speed 3
                 if (count2 == 2) begin 
                 count1 <= count1 + 1;
                 if(count1 == 251250)begin
@@ -109,6 +112,7 @@ module asteroid_move (
                 end
                 
                 end
+                //Speed 4
                 if (count2 == 3) begin
                 count1 <= count1 + 1;
                 if(count1 == 251250)begin
@@ -118,6 +122,7 @@ module asteroid_move (
                 end
                 
                 end
+                //Speed 5
                 if (count2 == 4) begin
                 count1 <= count1 + 1;
                 if(count1 == 251250)begin
@@ -127,6 +132,7 @@ module asteroid_move (
                 end
                 
                 end
+                //Speed 6
                 if (count2 == 5) begin
                 count1 <= count1 + 1;
                 if(count1 == 251250)begin
