@@ -158,12 +158,6 @@ module top(
     .vsync(vsync)
     );
     
-    rng rng_inst(
-    .clk(divided_clk),
-    .button(button),
-    .random1(random1)
-    );
-    
     score score_inst(
     .clk(clk),
     .halt(collide),
