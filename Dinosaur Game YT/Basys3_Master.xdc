@@ -88,14 +88,14 @@ set_property IOSTANDARD LVCMOS33 [get_ports clk]
 ##Buttons
 set_property PACKAGE_PIN U18 [get_ports debug]						
 set_property IOSTANDARD LVCMOS33 [get_ports debug]
-set_property PACKAGE_PIN T18 [get_ports upbtn]						
-set_property IOSTANDARD LVCMOS33 [get_ports upbtn]
-set_property PACKAGE_PIN W19 [get_ports leftbtn]						
-set_property IOSTANDARD LVCMOS33 [get_ports leftbtn]
-set_property PACKAGE_PIN T17 [get_ports rightbtn]						
-set_property IOSTANDARD LVCMOS33 [get_ports rightbtn]
-set_property PACKAGE_PIN U17 [get_ports downbtn]						
-set_property IOSTANDARD LVCMOS33 [get_ports downbtn]
+#set_property PACKAGE_PIN T18 [get_ports upbtn]						
+#set_property IOSTANDARD LVCMOS33 [get_ports upbtn]
+#set_property PACKAGE_PIN W19 [get_ports leftbtn]						
+#set_property IOSTANDARD LVCMOS33 [get_ports leftbtn]
+#set_property PACKAGE_PIN T17 [get_ports rightbtn]						
+#set_property IOSTANDARD LVCMOS33 [get_ports rightbtn]
+#set_property PACKAGE_PIN U17 [get_ports downbtn]						
+#set_property IOSTANDARD LVCMOS33 [get_ports downbtn]
  
 
 
@@ -249,11 +249,11 @@ set_property IOSTANDARD LVCMOS33 [get_ports vsync]
 
 
 ##USB HID (PS/2)
-#set_property PACKAGE_PIN C17 [get_ports PS2Clk]						
-#set_property IOSTANDARD LVCMOS33 [get_ports PS2Clk]
+set_property PACKAGE_PIN C17 [get_ports ps2_clk]						
+set_property IOSTANDARD LVCMOS33 [get_ports ps2_clk]
 #set_property PULLUP true [get_ports PS2Clk]
-#set_property PACKAGE_PIN B17 [get_ports PS2Data]					
-#set_property IOSTANDARD LVCMOS33 [get_ports PS2Data]	
+set_property PACKAGE_PIN B17 [get_ports ps2_data]					
+set_property IOSTANDARD LVCMOS33 [get_ports ps2_data]	
 #set_property PULLUP true [get_ports PS2Data]
 
 
