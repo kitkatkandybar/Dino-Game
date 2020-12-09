@@ -56,7 +56,7 @@ Calls all modules (except the keyboard module). It also calls the .mem files and
 ### Keyboard Module
 
 ### Asteroid Move Module
-This module is similar to the movement module (dinosaur specific), except this module is specifically for the movement of the asteroid. It is specific to the number passed to it (aka new_count) and outputs a different speed for each of the 5 asteroids. The top module (where the asteroids are drawn) then change the direction of the asteroid depending on if count_direc==0.
+This module is similar to the movement module (dinosaur specific), except this module is specifically for the movement of the asteroid. It is specific to the number passed to it (aka new_count) and outputs a different speed for each of the 5 asteroids. The top module (where the asteroids are drawn) then changes the direction of the asteroid depending on if count_direc==0.
 ### Clock Divider Module
 
 ### VGA Module
