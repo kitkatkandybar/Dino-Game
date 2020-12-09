@@ -26,7 +26,7 @@ The objective of the game is to survive as long as possible avoiding any obstica
 - Vivado 2020.2
 
 ### Download Dino Game
-Go to the GitHub repository for Dino Game. Click on the green "Code" button towards the right side of the screen. Press "Download Zip" under the green button. Go to where the file is stored and extract the zip file. 
+Go to the GitHub repository for Dino Game. Click on the green "Download" button towards the right side of the screen. Press "Download Zip" under the green button. Go to where the file is stored and extract the zip file. 
 
 ### Running the Game
 1. Open Vivado 2020.2
@@ -52,19 +52,19 @@ Go to the GitHub repository for Dino Game. Click on the green "Code" button towa
 ### Extinction Module
 
 ### Top Module
-
+Calls all modules (except the keyboard module). It also calls the .mem files and is responsible for drawing them and using the outputs of the movement modules (movement.v and asteroid_move.v) to animate the asteroid and dinosaur sprites.
 ### Keyboard Module
 
 ### Asteroid Move Module
-
+This module is similar to the movement module (dinosaur specific), except this module is specifically for the movement of the asteroid. It is specific to the number passed to it (aka new_count) and outputs a different speed for each of the 5 asteroids. The top module (where the asteroids are drawn) then change the direction of the asteroid depending on if count_direc==0.
 ### Clock Divider Module
 
 ### VGA Module
 
 ### Dinosprite Module
-
+The Dino sprite module is so that the dino can switch between run1 and run2 in the top module and appears to run as an animation.
 ### Movement Module
-
+This module acts as a counter for the x and y addresses and is called in the top module four times, one for each button, up, down, left, and right. Then when the dino is drawn, the movement addresses are added to the v and h addresses (vertical and horizontal addresses respectively).
 ### Score Module
 
 ## Future Goals and Improvements
