@@ -50,7 +50,7 @@ Go to the GitHub repository for Dino Game. Click on the green "Download" button 
 
 ## Overview of Code Structure
 ### Extinction Module
-
+This module calls the top module and keyboard module , allowing for the keyboard inputs to be taken by the top module. Through this, the dino is able to move based on the directional keys on the keyboard rather than the buttons on the fpga.
 ### Top Module
 Calls all modules (except the keyboard module). It also calls the .mem files and is responsible for drawing them and using the outputs of the movement modules (movement.v and asteroid_move.v) to animate the asteroid and dinosaur sprites.
 ### Keyboard Module
@@ -66,7 +66,7 @@ The Dino sprite module is so that the dino can switch between run1 and run2 in t
 ### Movement Module
 This module acts as a counter for the x and y addresses and is called in the top module four times, one for each button, up, down, left, and right. Then when the dino is drawn, the movement addresses are added to the v and h addresses (vertical and horizontal addresses respectively).
 ### Score Module
-
+This module increments the score based on the clock. It increases over time, pauses on death, and starts over at zero at the start of a new game. 
 ## Future Goals and Improvements
 ### Improvements
 - Add border to the screen
