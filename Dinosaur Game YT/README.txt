@@ -1,4 +1,6 @@
-Project Name: Extinction.
+Project Name: Extinction
+Team Name: Flying Spaghetti Monster
+Team Number: 20
 Team Members: Hannah Gold, Ian McFarlin, Ismaeel Alalawi, Jack Halberian, Kakit Wong
 Project Demo Video Link:
 
