@@ -15,7 +15,7 @@ Link:
 The game we created was inspired by the dino game on Google Chrome when the internet goes out. The game utilizes the fundamental concepts taught in the class, and is put into application. The goal of the project is to create an interactive game designed through Vivado which will be pushed onto a FPGA. The project allows indviduals to demonstrate their understanding of key components shown in the labs such as a keyboard input and a VGA display. Members of the project will also show a strong understand of several other topics such as clocks, registers, counters, and etc. Throughout the project members are taught how to collabrate as a team to fulfill the objects that were assigned. 
 
 ### Objective of the Game
-The objective of the game is to survive as long as possible avoiding any obsticales and objects that comes in the way of the dino. The dino will move in 1 direction until a new arrow key is pressed. The dino will continue moving until the game is lost. 
+The objective of the game is to survive as long as possible avoiding any obstacles and objects that comes in the way of the dino. The dino will move in 1 direction until a new arrow key is pressed. The dino will continue moving until the game is lost. 
 
 ## Game Usage and Installation
 ### Required Material
