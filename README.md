@@ -8,7 +8,7 @@
 - Kakit Wong
 
 ## Demo Video
-Link: 
+Link: https://drive.google.com/file/d/1y6n-KjyTvzPD4jkQToe4g9B-8PjEIBKo/view?usp=sharing
 
 ## Project Overview
 ### Goals for the Project
