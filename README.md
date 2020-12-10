@@ -8,7 +8,7 @@
 - Kakit Wong
 
 ## Demo Video
-Link: [Video Link]
+Link: 
 
 ## Project Overview
 ### Goals for the Project
