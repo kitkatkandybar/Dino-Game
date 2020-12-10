@@ -26,7 +26,7 @@ The objective of the game is to survive as long as possible avoiding any obstacl
 - Vivado 2020.2
 
 ### Download Dino Game
-Go to the GitHub repository for Dino Game. Click on the green "Download" button towards the right side of the screen. Press "Download Zip" under the green button. Go to where the file is stored and extract the zip file. 
+Go to the GitHub repository for Dino Game. Click on the green "Code" button towards the right side of the screen. Press "Download Zip" under the green button. Go to where the file is stored and extract the zip file. 
 
 ### Running the Game
 1. Open Vivado 2020.2
